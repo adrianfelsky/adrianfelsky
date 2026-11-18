@@ -59,7 +59,7 @@
     } &
     
     % COLUNA 3: TEXTO COM LINKS (Alinhados ao meio)
-    {\color{ContactOrange}\sffamily\fontsize{9pt}{10.5pt}\selectfont
+    {\color{ContactOrange}\sffamily\fontsize{8pt}{8pt}\selectfont
       \href{https://wa.me/5547999574167}{+55 (47) 99957-4167}\par
       \href{mailto:adriangazzani@gmail.com}{adriangazzani@gmail.com}\par
       \href{https://www.google.com/maps/place/89037-501}{Blumenau (SC) - 89037-501}
@@ -75,7 +75,7 @@
 
 \newcommand{\subtitulo}[2]{
   \vspace{7pt}%
-  {\noindent\rmfamily\fontsize{11pt}{12pt}\selectfont\textcolor{TitleBlack}{\textbf{#1}\textnormal{#2}}\par}%
+  {\noindent\rmfamily\fontsize{11pt}{12pt}\selectfont\textcolor{TitleBlack}{\textbf{#1}\textnormal{ #2}}\par}%
 }
 
 \newcommand{\data}[1]{
@@ -100,24 +100,17 @@
 
 % Item de Experiência Profissional
 \newcommand{\cventry}[4]{%
-  \subtitulo{#1}{ -- #2}
+  \subtitulo{#1}{-- #2}
   \data{#3}
   \textonormal{}{#4}
 }
 
 % Item de Formação Acadêmica
-\newcommand{\cvedu}[4]{%
-  \subtitulo{#1}{ -- #2}
+\newcommand{\cvedu}[5]{%
+  \subtitulo{#1}{#2}
   \data{#3}
-  \textonormal{}{#4}
+  \textonormal{#4}{#5}
 }
-
-% % Item de Projeto
-% \newcommand{\cvproject}[5]{%
-%   \subtitulo{#1}{#2}
-%   \projectlink{#3}{#4}
-%   \textonormal{}{#5}
-% }
 
 % Item de Projeto
 \newcommand{\cvproject}[5]{%
@@ -139,9 +132,20 @@
   \textonormal{#1}{#2}
 }
 
+% % Idioma
+% \newcommand{\cvidiom}[1]{%
+%   \begingroup
+%   \renewcommand{\vspace{2pt}}[1]{}
+%   \textonormal{}{#1}%
+%   \endgroup
+% }
+
 % Idioma
-\newcommand{\cvidiom}[1]{
-  \textonormal{}{#1}
+\newcommand{\cvidiom}[2]{%
+  \begingroup
+  \renewcommand{\vspace}[1]{\vskip 2pt}
+  \textonormal{#1}{-- #2}%
+  \endgroup
 }
 
 % ==========================================
@@ -173,31 +177,37 @@
   Execução de rotinas administrativas com foco na elaboração de planilhas para controle de processos e suporte ao atendimento direto ao cliente. Atuação na organização de fluxos de trabalho internos e auxílio operacional na gestão de documentos e informações do setor.%
 }
 
-\cvsection{FORMAÇÃO}
-
-\cvedu{Universidade Federal de Santa Catarina}{Graduação}{JUNHO DE 2022 - EM ANDAMENTO, BLUMENAU - SC}{%
-  Bacharelado em Engenharia de Controle e Automação%
-}
-
-\cvedu{Instituto Federal de Mato Grosso}{Ensino Médio Integrado}{JANEIRO DE 2018 - DEZEMBRO DE 2020, CUIABÁ - MT}{%
-  Ensino técnico profissionalizante em eletroeletrônica.%
-}
-
 \cvsection{PROJETOS}
 
-\cvproject{No Prumo: }{Sistema de Gestão para Obras e Construção Civil}{https://github.com/GabrielHenriqueCe/NoPrumo.git}{Link GitHub}{%
+\cvproject{No Prumo:}{Sistema de Gestão para Obras e Construção Civil}{https://github.com/GabrielHenriqueCe/NoPrumo.git}{Repositório GitHub}{%
   Desenvolvimento de uma aplicação web completa (API em C\# .NET Core com Clean Architecture e frontend em React) voltada para o gerenciamento de obras, controle de estoque, equipes e requisições de compra. Atuei na arquitetura e implementação de módulos do sistema, incluindo controle de movimentações de estoque, integração de regras de negócio, controle de ponto, rotas da API e telas da interface para acompanhamento financeiro e operacional de projetos.%
 }
 
-\cvproject{Protótipo de Automação do Controle no Depósito de Matéria-Prima}{}{https://github.com/adrianfelsky/gestao-de-estoque-rfid/tree/patch-1}{Link GitHub}{%
+\cvproject{Protótipo de Automação do Controle no Depósito de Matéria-Prima}{}{https://github.com/adrianfelsky/gestao-de-estoque-rfid/tree/patch-1}{Repositório GitHub}{%
   Implementação de um sistema de identificação por RFID para controle e gestão de estoque. Atuei na criação e integração do banco de dados MySQL utilizando Python, bem como no desenvolvimento do sistema embarcado em Arduino com C++, além de auxílio na documentação e gestão do projeto com Trello e ProjectLibre.%
 }
 
-\cvproject{Arquitetura de Controle para Automação de Linha de Produção}{}{https://drive.google.com/drive/folders/1KUVhSGjqwdvy2c0Ng44Rv6noSsY3V96u?usp=sharing}{Documentação}{Desenvolvimento da automação de uma célula industrial simulada no FactoryIO. Atuei na implementação da lógica de controle em CLP utilizando linguagem Ladder estruturada em FSM, sincronizando esteiras, atuadores, configuração de contadores e temporizadores, além da definição de estratégias de segurança e tratamento de falhas.}
+\cvproject{Arquitetura de Controle para Automação de Linha de Produção}{}{https://drive.google.com/drive/folders/1KUVhSGjqwdvy2c0Ng44Rv6noSsY3V96u?usp=sharing}{Documentação do projeto}{Desenvolvimento da automação de uma célula industrial simulada no FactoryIO. Atuei na implementação da lógica de controle em CLP utilizando linguagem Ladder estruturada em FSM, sincronizando esteiras, atuadores, configuração de contadores e temporizadores, além da definição de estratégias de segurança e tratamento de falhas.}
+
+\cvproject{Economia Digital e Comportamento:}{Vieses Cognitivos em Plataformas de Reservas}{https://drive.google.com/drive/folders/1F2QMQNhS111xobrtduxpHqVYyy9-DDgK}{Documentação da pesquisa}{%
+  Condução de pesquisa primária na região de Blumenau/SC para analisar vieses comportamentais de consumidores em plataformas de hospedagem. Atuei na formulação da pesquisa, processamento dos dados coletados em arquivo CSV via PapaParse e no desenvolvimento de um dashboard web em React, utilizando Recharts e CSS para a visualização interativa das métricas sobre inércia de decisão e aversão à perda.%
+}
 
 \switchcolumn
 
 % --- COLUNA DIREITA (PORTUGUÊS) ---
+\cvsection{FORMAÇÃO}
+
+\cvedu{Universidade Federal de Santa Catarina}{}{JUNHO DE 2022 - EM ANDAMENTO, BLUMENAU - SC}{}{%
+  Bacharelado em Engenharia de Controle e Automação.%
+}
+
+\cvedu{Senac SC}{-- Programa Entra21}{MARÇO DE 2026 - OUTUBRO DE 2026, BLUMENAU - SC}{}{Capacitação profissional para desenvolvimento de sistemas em C\# .NET.}
+
+\cvedu{Instituto Federal de Mato Grosso}{}{JANEIRO DE 2018 - DEZEMBRO DE 2020, CUIABÁ - MT}{}{%
+  Ensino médio integrado em eletroeletrônica.%
+}
+
 \cvsection{HABILIDADES}
 
 \cvskillgroup{Programação e Software}
@@ -227,10 +237,11 @@
 \cvskill{Aprendizado:}{Facilidade para aprender e se adaptar a novas rotinas e conhecimentos.}
 
 \cvsection{IDIOMAS}
-\cvidiom{Inglês Avançado}
-\cvidiom{Espanhol Intermediário}
-\cvidiom{Italiano Básico}
-\cvidiom{Alemão Básico}
+\cvidiom{Português}{Fluente}
+\cvidiom{Inglês}{Avançado}
+\cvidiom{Espanhol}{Intermediário}
+\cvidiom{Italiano}{Básico}
+\cvidiom{Alemão}{Básico}
 
 
 \end{paracol}
@@ -259,33 +270,41 @@
   Executed administrative routines focusing on creating spreadsheets for process control and providing direct customer service support. Acted in the organization of internal workflows and provided operational assistance in managing documents and departmental information.%
 }
 
-\cvsection{EDUCATION}
-
-\cvedu{Federal University of Santa Catarina}{Graduation}{JUNE 2022 - ONGOING, BLUMENAU - SC}{%
-  Bachelor's Degree in Control and Automation Engineering.%
-}
-
-\cvedu{Federal Institute of Mato Grosso}{Integrated High School}{JANUARY 2018 - DECEMBER 2020, CUIABÁ - MT}{%
-  Vocational technical education in electro-electronics.%
-}
-
 \cvsection{PROJECTS}
 
-\cvproject{No Prumo: }{Construction Management System}{https://github.com/GabrielHenriqueCe/NoPrumo.git}{GitHub Link}{%
-  Development of a full-stack web application (C\# .NET Core API with Clean Architecture and React frontend) for construction management, inventory control, team management, and purchase requests. Acted in system architecture and module implementation, including inventory movement control, business logic integration, API routes, and interface screens for financial and operational project tracking.%
+\cvproject{No Prumo:}{Construction Management System}{https://github.com/GabrielHenriqueCe/NoPrumo.git}{GitHub Repository}{%
+  Development of a full-stack web application (C\# .NET Core API with Clean Architecture and React frontend) for construction management, inventory control, team management, and purchase requests. Acted in system architecture and module implementation, including inventory movement control, business logic integration, time tracking, API routes, and interface screens for financial and operational project tracking.%
 }
 
-\cvproject{Raw Material Warehouse Control Automation Prototype}{}{https://github.com/adrianfelsky/gestao-de-estoque-rfid/tree/patch-1}{GitHub Link}{%
+\cvproject{Raw Material Warehouse Control Automation Prototype}{}{https://github.com/adrianfelsky/gestao-de-estoque-rfid/tree/patch-1}{GitHub Repository}{%
   Implemented an RFID identification system for inventory control and management. Acted in the creation and integration of a MySQL database using Python, as well as in the development of the embedded system in Arduino using C++, along with assisting in project documentation and management with Trello and ProjectLibre.%
 }
 
-\cvproject{Control Architecture for Production Line Automation}{}{https://drive.google.com/drive/folders/1KUVhSGjqwdvy2c0Ng44Rv6noSsY3V96u?usp=sharing}{Documentation}{%
+\cvproject{Control Architecture for Production Line Automation}{}{https://drive.google.com/drive/folders/1KUVhSGjqwdvy2c0Ng44Rv6noSsY3V96u?usp=sharing}{Project Documentation}{%
   Developed the automation of a simulated industrial cell in FactoryIO. Acted in implementing control logic in PLC using Ladder language structured in FSM, synchronizing conveyors, actuators, configuring counters and timers, in addition to defining safety strategies and fault handling.%
+}
+
+\cvproject{Digital Economy and Behavior:}{Cognitive Biases in Hotel Booking Platforms}{https://drive.google.com/drive/folders/1F2QMQNhS111xobrtduxpHqVYyy9-DDgK}{Research Documentation}{%
+  Conducted primary research in the Blumenau/SC region to analyze consumer behavioral biases in accommodation platforms. Acted in research formulation, processing collected data in CSV via PapaParse, and developing a web dashboard in React, using Recharts and CSS for interactive visualization of decision inertia and loss aversion metrics.%
 }
 
 \switchcolumn
 
 % --- COLUNA DIREITA (INGLÊS) ---
+\cvsection{EDUCATION}
+
+\cvedu{Federal University of Santa Catarina}{}{JUNE 2022 - ONGOING, BLUMENAU - SC}{}{%
+  Bachelor's Degree in Control and Automation Engineering.%
+}
+
+\cvedu{Senac SC}{ -- Entra21 Program}{MARCH 2026 - OCTOBER 2026, BLUMENAU - SC}{}{%
+  Professional training for systems development in C\# .NET.%
+}
+
+\cvedu{Federal Institute of Mato Grosso}{}{JANUARY 2018 - DECEMBER 2020, CUIABÁ - MT}{}{%
+  Vocational technical education in electro-electronics.%
+}
+
 \cvsection{SKILLS}
 
 \cvskillgroup{Programming and Software}
@@ -315,10 +334,11 @@
 \cvskill{Learning:}{Aptitude for learning and adapting to new routines and knowledge.}
 
 \cvsection{LANGUAGES}
-\cvidiom{Advanced English}
-\cvidiom{Intermediate Spanish}
-\cvidiom{Basic Italian}
-\cvidiom{Basic German}
+\cvidiom{Portuguese}{Fluent}
+\cvidiom{English}{Advanced}
+\cvidiom{Spanish}{Intermediate}
+\cvidiom{Italian}{Basic}
+\cvidiom{German}{Basic}
 
 \end{paracol}
 
