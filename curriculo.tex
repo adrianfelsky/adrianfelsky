@@ -1,0 +1,325 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[
+  top=20pt,
+  bottom=20pt,
+  left=25pt,
+  right=25pt
+]{geometry}
+\usepackage{array}
+
+% Fontes
+\usepackage{merriweather}
+\usepackage{fontawesome5}
+\usepackage[defaultsans]{opensans}
+
+% Cores, Colunas e Links
+\usepackage[dvipsnames,svgnames,x11names]{xcolor}
+\usepackage{paracol}
+\usepackage{tabularx}
+\usepackage[normalem]{ulem}
+\usepackage[hidelinks]{hyperref}
+
+% Definição das cores
+\definecolor{TitleBlack}{HTML}{000000}
+\definecolor{LinkedIn}{HTML}{0077B5}
+\definecolor{HeadingBlue}{HTML}{2079C7}
+\definecolor{ContactOrange}{HTML}{D44500}
+\definecolor{BodyGrey}{HTML}{666666}
+\definecolor{LinkBlue}{HTML}{1155CC}
+\definecolor{Portfolio}{HTML}{555555}
+
+% Ajustes de página e espaçamento
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\columnsep}{14.4pt}
+
+% ==========================================
+% COMANDOS PERSONALIZADOS DE ESTILO
+% ==========================================
+
+% Cabeçalho 
+\newcommand{\cvheader}{%
+  \noindent
+  \begin{tabular*}{\textwidth}{@{}
+  %   \begin{tabular*}{\textwidth}{@{}
+  m{0.56\textwidth}@{\extracolsep{\fill}}
+  m{0.20\textwidth}@{}
+  m{0.24\textwidth}@{}}
+    % COLUNA 1: NOME
+    {\color{TitleBlack}\rmfamily\bfseries\fontsize{36pt}{36pt}\selectfont Adrian Gazzani} &
+    
+    % COLUNA 2: ÍCONES COM LINKS (Alinhados ao meio)
+    {\fontsize{15pt}{15pt}\selectfont
+      \color{LinkedIn}\href{https://www.linkedin.com/in/adriangazzani}{\faLinkedin} \color{ContactOrange}•
+      \color{TitleBlack}\href{https://github.com/adrianfelsky}{\faGithub} \color{ContactOrange}•
+      \color{Portfolio}\href{https://adrianfelsky.github.io/adrianfelsky/}{\faGlobe}
+    } &
+    
+    % COLUNA 3: TEXTO COM LINKS (Alinhados ao meio)
+    {\color{ContactOrange}\sffamily\fontsize{9pt}{10.5pt}\selectfont
+      \href{https://wa.me/5547999574167}{+55 (47) 99957-4167}\par
+      \href{mailto:adriangazzani@gmail.com}{adriangazzani@gmail.com}\par
+      \href{https://www.google.com/maps/place/89037-501}{Blumenau (SC) - 89037-501}
+    }
+  \end{tabular*}
+  \vspace{5pt}
+}
+
+\newcommand{\titulo}[1]{
+    \vspace{7pt}%
+    {\noindent\sffamily\bfseries\fontsize{10pt}{10pt}\selectfont\textcolor{HeadingBlue}{#1}\par}
+}
+
+\newcommand{\subtitulo}[2]{
+  \vspace{7pt}%
+  {\noindent\rmfamily\fontsize{11pt}{12pt}\selectfont\textcolor{TitleBlack}{\textbf{#1}\textnormal{#2}}\par}%
+}
+
+\newcommand{\data}[1]{
+  \vspace{5pt}
+  {\noindent\sffamily\fontsize{8pt}{9pt}\selectfont\textcolor{BodyGrey}{#1}\par}%
+}
+
+\newcommand{\textonormal}[2]{
+  \vspace{5pt}%
+  {\noindent\rmfamily\fontsize{9pt}{12pt}\selectfont\textcolor{BodyGrey}{\textbf{#1} #2}\par}%
+}
+
+% Estilo de Link em Projetos (Itálico, Azul e Sublinhado)
+\newcommand{\projectlink}[2]{
+  \href{#1}{-- \textcolor{LinkBlue}{\normalfont\itshape\fontsize{11pt}{12pt}\selectfont\uline{#2}}}\par
+}
+
+% Título de Seção (EXPERIÊNCIA, FORMAÇÃO, HABILIDADES, etc.)
+\newcommand{\cvsection}[1]{%
+  \titulo{#1}%
+}
+
+% Item de Experiência Profissional
+\newcommand{\cventry}[4]{%
+  \subtitulo{#1}{ -- #2}
+  \data{#3}
+  \textonormal{}{#4}
+}
+
+% Item de Formação Acadêmica
+\newcommand{\cvedu}[4]{%
+  \subtitulo{#1}{ -- #2}
+  \data{#3}
+  \textonormal{}{#4}
+}
+
+% % Item de Projeto
+% \newcommand{\cvproject}[5]{%
+%   \subtitulo{#1}{#2}
+%   \projectlink{#3}{#4}
+%   \textonormal{}{#5}
+% }
+
+% Item de Projeto
+\newcommand{\cvproject}[5]{%
+  \begingroup
+  \let\par\relax % Neutraliza a quebra de linha
+  \subtitulo{#1}{#2}%
+  \projectlink{#3}{#4}%
+  \endgroup\par % Restaura a quebra de linha
+  \textonormal{}{#5}
+}
+
+% Subtítulo da Barra Lateral (Habilidades)
+\newcommand{\cvskillgroup}[1]{%
+  \subtitulo{#1}{}
+}
+
+% Item de Habilidade ou Competência
+\newcommand{\cvskill}[2]{%
+  \textonormal{#1}{#2}
+}
+
+% Idioma
+\newcommand{\cvidiom}[1]{
+  \textonormal{}{#1}
+}
+
+% ==========================================
+% INÍCIO DO DOCUMENTO
+% ==========================================
+\begin{document}
+\raggedright
+
+% ------------------------------------------
+% VERSÃO EM PORTUGUÊS
+% ------------------------------------------
+\cvheader
+
+\columnratio{0.585, 0.415}
+\begin{paracol}{2}
+
+% --- COLUNA ESQUERDA (PORTUGUÊS) ---
+\cvsection{EXPERIÊNCIA}
+
+\cventry{Schneider Electric}{Estágio em Engenharia Industrial}{AGOSTO DE 2026 - ATUALMENTE, BLUMENAU - SC}{%
+  Atuação em projetos de melhoria contínua, digitalização e otimização de processos industriais e logísticos. Realização de estudos de tempos e análise de processos de montagem, desenvolvimento de automações para atividades operacionais e suporte à análise de dados e indicadores.%
+}
+
+\cventry{UFSC}{Monitoria Circuitos Elétricos}{FEVEREIRO DE 2026 - AGOSTO DE 2026, BLUMENAU - SC}{%
+  Atuação no suporte acadêmico a estudantes para esclarecimento de dúvidas e resolução de exercícios da disciplina. Colaboração direta com o docente na elaboração e revisão de roteiros para práticas de laboratório, além de auxiliar na gestão, organização e manutenção técnica do ambiente experimental.%
+}
+
+\cventry{Grupo Selecionar}{Auxiliar de administração}{MAIO DE 2024 - AGOSTO DE 2024, BLUMENAU - SC}{%
+  Execução de rotinas administrativas com foco na elaboração de planilhas para controle de processos e suporte ao atendimento direto ao cliente. Atuação na organização de fluxos de trabalho internos e auxílio operacional na gestão de documentos e informações do setor.%
+}
+
+\cvsection{FORMAÇÃO}
+
+\cvedu{Universidade Federal de Santa Catarina}{Graduação}{JUNHO DE 2022 - EM ANDAMENTO, BLUMENAU - SC}{%
+  Bacharelado em Engenharia de Controle e Automação%
+}
+
+\cvedu{Instituto Federal de Mato Grosso}{Ensino Médio Integrado}{JANEIRO DE 2018 - DEZEMBRO DE 2020, CUIABÁ - MT}{%
+  Ensino técnico profissionalizante em eletroeletrônica.%
+}
+
+\cvsection{PROJETOS}
+
+\cvproject{No Prumo: }{Sistema de Gestão para Obras e Construção Civil}{https://github.com/GabrielHenriqueCe/NoPrumo.git}{Link GitHub}{%
+  Desenvolvimento de uma aplicação web completa (API em C\# .NET Core com Clean Architecture e frontend em React) voltada para o gerenciamento de obras, controle de estoque, equipes e requisições de compra. Atuei na arquitetura e implementação de módulos do sistema, incluindo controle de movimentações de estoque, integração de regras de negócio, controle de ponto, rotas da API e telas da interface para acompanhamento financeiro e operacional de projetos.%
+}
+
+\cvproject{Protótipo de Automação do Controle no Depósito de Matéria-Prima}{}{https://github.com/adrianfelsky/gestao-de-estoque-rfid/tree/patch-1}{Link GitHub}{%
+  Implementação de um sistema de identificação por RFID para controle e gestão de estoque. Atuei na criação e integração do banco de dados MySQL utilizando Python, bem como no desenvolvimento do sistema embarcado em Arduino com C++, além de auxílio na documentação e gestão do projeto com Trello e ProjectLibre.%
+}
+
+\cvproject{Arquitetura de Controle para Automação de Linha de Produção}{}{https://drive.google.com/drive/folders/1KUVhSGjqwdvy2c0Ng44Rv6noSsY3V96u?usp=sharing}{Documentação}{Desenvolvimento da automação de uma célula industrial simulada no FactoryIO. Atuei na implementação da lógica de controle em CLP utilizando linguagem Ladder estruturada em FSM, sincronizando esteiras, atuadores, configuração de contadores e temporizadores, além da definição de estratégias de segurança e tratamento de falhas.}
+
+\switchcolumn
+
+% --- COLUNA DIREITA (PORTUGUÊS) ---
+\cvsection{HABILIDADES}
+
+\cvskillgroup{Programação e Software}
+\cvskill{Back-End:}{C, C++, Python, C\#.}
+\cvskill{Bancos de Dados:}{SQL (MySQL, MariaDB, SQLite).}
+\cvskill{Front-End:}{HTML, CSS, JavaScript, React.}
+
+\cvskillgroup{Controle e Automação}
+\cvskill{Microcontroladores:}{ESP32, Arduino, Linux Embarcado.}
+\cvskill{Industrial:}{CLP (Ladder, SFC), SCADA, CNC.}
+\cvskill{Eletrônica:}{Retificadores, Amplificadores, Inversores de Frequência, Transistores.}
+
+\cvskillgroup{Desenho e Simulação}
+\cvskill{CAD:}{AutoCAD, SolidWorks, KiCAD.}
+\cvskill{Controle de Sistemas:}{MATLAB, Simulink.}
+
+\cvskillgroup{Ferramentas de Produtividade}
+\cvskill{Pacote Office:}{Excel, PowerBI, Word, PowerPoint, PowerAutomate.}
+\cvskill{Gestão:}{ProjectLibre, Trello, SAP.}
+
+\cvsection{COMPETÊNCIAS}
+
+\cvskill{Organização:}{Gestão de rotinas e documentos.}
+\cvskill{Analítico:}{Análise de dados e relatórios Excel.}
+\cvskill{Colaboração:}{Bom relacionamento interpessoal e foco nos objetivos do time.}
+\cvskill{Desenvolvimento:}{Interesse constante em novas tecnologias e automação.}
+\cvskill{Aprendizado:}{Facilidade para aprender e se adaptar a novas rotinas e conhecimentos.}
+
+\cvsection{IDIOMAS}
+\cvidiom{Inglês Avançado}
+\cvidiom{Espanhol Intermediário}
+\cvidiom{Italiano Básico}
+\cvidiom{Alemão Básico}
+
+
+\end{paracol}
+
+% ------------------------------------------
+% VERSÃO EM INGLÊS
+% ------------------------------------------
+\newpage
+\cvheader
+
+\columnratio{0.585, 0.415}
+\begin{paracol}{2}
+
+% --- COLUNA ESQUERDA (INGLÊS) ---
+\cvsection{EXPERIENCE}
+
+\cventry{Schneider Electric}{Industrial Engineering Intern}{AUGUST 2026 - PRESENT, BLUMENAU - SC}{%
+  Working on continuous improvement, digitalization, and optimization projects for industrial and logistic processes. Conducting time studies and assembly process analysis, developing automations for operational activities, and supporting data and indicator analysis.%
+}
+
+\cventry{UFSC}{Electric Circuits Teaching Assistant}{FEBRUARY 2026 - AUGUST 2026, BLUMENAU - SC}{%
+  Provided academic support to students to clarify doubts and solve course exercises. Directly collaborated with the professor in drafting and reviewing scripts for laboratory practices, in addition to assisting in the management, organization, and technical maintenance of the experimental environment.%
+}
+
+\cventry{Grupo Selecionar}{Administrative Assistant}{MAY 2024 - AUGUST 2024, BLUMENAU - SC}{%
+  Executed administrative routines focusing on creating spreadsheets for process control and providing direct customer service support. Acted in the organization of internal workflows and provided operational assistance in managing documents and departmental information.%
+}
+
+\cvsection{EDUCATION}
+
+\cvedu{Federal University of Santa Catarina}{Graduation}{JUNE 2022 - ONGOING, BLUMENAU - SC}{%
+  Bachelor's Degree in Control and Automation Engineering.%
+}
+
+\cvedu{Federal Institute of Mato Grosso}{Integrated High School}{JANUARY 2018 - DECEMBER 2020, CUIABÁ - MT}{%
+  Vocational technical education in electro-electronics.%
+}
+
+\cvsection{PROJECTS}
+
+\cvproject{No Prumo: }{Construction Management System}{https://github.com/GabrielHenriqueCe/NoPrumo.git}{GitHub Link}{%
+  Development of a full-stack web application (C\# .NET Core API with Clean Architecture and React frontend) for construction management, inventory control, team management, and purchase requests. Acted in system architecture and module implementation, including inventory movement control, business logic integration, API routes, and interface screens for financial and operational project tracking.%
+}
+
+\cvproject{Raw Material Warehouse Control Automation Prototype}{}{https://github.com/adrianfelsky/gestao-de-estoque-rfid/tree/patch-1}{GitHub Link}{%
+  Implemented an RFID identification system for inventory control and management. Acted in the creation and integration of a MySQL database using Python, as well as in the development of the embedded system in Arduino using C++, along with assisting in project documentation and management with Trello and ProjectLibre.%
+}
+
+\cvproject{Control Architecture for Production Line Automation}{}{https://drive.google.com/drive/folders/1KUVhSGjqwdvy2c0Ng44Rv6noSsY3V96u?usp=sharing}{Documentation}{%
+  Developed the automation of a simulated industrial cell in FactoryIO. Acted in implementing control logic in PLC using Ladder language structured in FSM, synchronizing conveyors, actuators, configuring counters and timers, in addition to defining safety strategies and fault handling.%
+}
+
+\switchcolumn
+
+% --- COLUNA DIREITA (INGLÊS) ---
+\cvsection{SKILLS}
+
+\cvskillgroup{Programming and Software}
+\cvskill{Back-End:}{C, C++, Python, C\#.}
+\cvskill{Databases:}{SQL (MySQL, MariaDB, SQLite).}
+\cvskill{Front-End:}{HTML, CSS, JavaScript, React.}
+
+\cvskillgroup{Control and Automation}
+\cvskill{Microcontrollers:}{ESP32, Arduino, Embedded Linux.}
+\cvskill{Industrial:}{PLC (Ladder, SFC), SCADA, CNC.}
+\cvskill{Electronics:}{Rectifiers, Amplifiers, Frequency Inverters, Transistors.}
+
+\cvskillgroup{Design and Simulation}
+\cvskill{CAD:}{AutoCAD, SolidWorks, KiCAD.}
+\cvskill{Systems Control:}{MATLAB, Simulink.}
+
+\cvskillgroup{Productivity Tools}
+\cvskill{Office Suite:}{Excel, PowerBI, Word, PowerPoint, PowerAutomate.}
+\cvskill{Management:}{ProjectLibre, Trello, SAP.}
+
+\cvsection{COMPETENCIES}
+
+\cvskill{Organization:}{Routine and document management.}
+\cvskill{Analytical:}{Data analysis and Excel reports.}
+\cvskill{Collaboration:}{Good interpersonal relationships and focus on team goals.}
+\cvskill{Development:}{Constant interest in new technologies and automation.}
+\cvskill{Learning:}{Aptitude for learning and adapting to new routines and knowledge.}
+
+\cvsection{LANGUAGES}
+\cvidiom{Advanced English}
+\cvidiom{Intermediate Spanish}
+\cvidiom{Basic Italian}
+\cvidiom{Basic German}
+
+\end{paracol}
+
+\end{document}
